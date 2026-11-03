@@ -28,7 +28,7 @@ Hero with contact and résumé actions; professional highlights; about; internsh
 Direct first-person writing. Prioritize recruiter-facing qualifications and hands-on engineering work. Distinguish documented experience from project contributions.
 
 ## Assets
-No project photos or technical screenshots supplied yet. The résumé download link targets `Mendoza_Kevin_Resume.pdf` in the repository root; add that PDF there to activate the download.
+Web-ready résumé PDF `Mendoza_Kevin_Resume.pdf` is committed to the repository root. No project photos or technical screenshots supplied yet.
 
 ## Functionality
 Responsive single-file HTML page. Contact form opens a prefilled email draft to kevincaceresmendoza@gmail.com; it does not submit to a backend. LinkedIn, email, phone, and résumé links are included.
