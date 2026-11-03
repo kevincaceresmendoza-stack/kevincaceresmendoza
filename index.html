@@ -487,6 +487,114 @@
       .contact-form { padding: 20px; }
     }
 
+
+    /* PROJECT CARDS + CATEGORIZED TECHNICAL EXPERTISE */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      border-top: 0;
+    }
+    .project-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 12px 16px;
+      align-content: start;
+      min-height: 228px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+    }
+    .project-row:hover {
+      border-color: #a9bce1;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(17, 29, 48, .07);
+    }
+    .project-index {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--blue-pale);
+      color: var(--blue-dark);
+      font-size: 11px;
+    }
+    .project-row > div:nth-child(2) { align-self: center; }
+    .project-name { margin: 0 0 7px; font-size: 19px; }
+    .project-description {
+      grid-column: 1 / -1;
+      padding-top: 13px;
+      border-top: 1px solid var(--soft);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .project-role {
+      grid-column: 1 / -1;
+      margin: -2px 0 0;
+      color: var(--blue-dark);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .project-row:last-child { grid-column: 1 / -1; min-height: 0; }
+    .capability-layout { grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); }
+    .capability-groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .skill-group {
+      min-height: 190px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .skill-kicker {
+      display: block;
+      margin-bottom: 17px;
+      color: var(--blue-dark);
+      font: 500 9px "IBM Plex Mono", monospace;
+      letter-spacing: .08em;
+    }
+    .skill-group h3 {
+      margin-bottom: 8px;
+      font-size: 17px;
+      letter-spacing: -.035em;
+    }
+    .skill-group p {
+      min-height: 66px;
+      margin-bottom: 15px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tags span {
+      padding: 5px 8px;
+      border-radius: 4px;
+      background: var(--blue-pale);
+      color: var(--blue-dark);
+      font-size: 10px;
+      font-weight: 700;
+    }
+    @media (max-width: 860px) {
+      .projects { grid-template-columns: 1fr 1fr; }
+      .project-row { grid-template-columns: 36px minmax(0, 1fr); }
+      .capability-layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .projects, .capability-groups { grid-template-columns: 1fr; }
+      .project-row:last-child { grid-column: auto; }
+      .project-row { min-height: 0; padding: 21px; }
+      .skill-group { min-height: 0; }
+      .skill-group p { min-height: 0; }
+    }
+
   </style>
 </head>
 <body>
@@ -720,13 +828,31 @@
           <p class="section-intro">From early design work to testing and documentation, I bring a practical, collaborative approach to electronics engineering.</p>
           <p class="software-line"><strong>Tools:</strong> Altium Designer · AutoCAD · NI Multisim · Arduino</p>
         </div>
-        <div class="capability-list" aria-label="Technical capabilities">
-          <div class="capability"><span>Circuit and PCB design</span><span aria-hidden="true">↗</span></div>
-          <div class="capability"><span>Schematic review and circuit testing</span><span aria-hidden="true">↗</span></div>
-          <div class="capability"><span>PCB and hardware troubleshooting</span><span aria-hidden="true">↗</span></div>
-          <div class="capability"><span>Embedded systems and microcontroller development</span><span aria-hidden="true">↗</span></div>
-          <div class="capability"><span>Technical documentation</span><span aria-hidden="true">↗</span></div>
-          <div class="capability"><span>AutoCAD engineering drawings</span><span aria-hidden="true">↗</span></div>
+        <div class="capability-groups" aria-label="Technical expertise">
+          <article class="skill-group">
+            <span class="skill-kicker">01 / DESIGN & DRAFTING</span>
+            <h3>Engineering design</h3>
+            <p>PCB design and layout concepts, schematic interpretation, and technical drafting.</p>
+            <div class="skill-tags"><span>Altium Designer</span><span>AutoCAD</span></div>
+          </article>
+          <article class="skill-group">
+            <span class="skill-kicker">02 / DEVELOPMENT</span>
+            <h3>Embedded systems</h3>
+            <p>Microcontroller-based development, Arduino programming concepts, and hardware integration.</p>
+            <div class="skill-tags"><span>Arduino</span><span>Microcontrollers</span></div>
+          </article>
+          <article class="skill-group">
+            <span class="skill-kicker">03 / TEST & SIMULATION</span>
+            <h3>Circuit analysis</h3>
+            <p>Circuit simulation, digital logic exploration, schematic review, and prototype testing support.</p>
+            <div class="skill-tags"><span>NI Multisim</span><span>Circuit testing</span></div>
+          </article>
+          <article class="skill-group">
+            <span class="skill-kicker">04 / ENGINEERING PRACTICE</span>
+            <h3>Technical execution</h3>
+            <p>PCB and hardware troubleshooting, technical documentation, laboratory reporting, and collaboration.</p>
+            <div class="skill-tags"><span>Documentation</span><span>Troubleshooting</span></div>
+          </article>
         </div>
       </div>
     </section>
