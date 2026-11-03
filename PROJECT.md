@@ -19,7 +19,7 @@ Support job applications, present engineering experience and projects, and invit
 Kevin C. Mendoza. Professional identity: Electronics Engineer and Electronics Technician.
 
 ## Visual Direction
-Corporate, professional, modern, and minimalist. Light neutral surfaces, navy typography, blue accents, editorial layout, and custom circuit-board geometry. No generic portfolio template.
+Precision-engineering editorial direction: warm light-neutral canvas, deep navy, restrained cobalt accents, Manrope display/body typography, IBM Plex Mono only for technical metadata, generous whitespace, clear typographic hierarchy, fine dividers, and a custom geometric circuit-board hero illustration. Text-first project presentation with no project or stock photos. Responsive, accessible, recruiter-first.
 
 ## Page Structure
 Hero with contact and résumé actions; professional highlights; about; internship experience; selected projects; technical capabilities; education and credentials; contact form; footer.
