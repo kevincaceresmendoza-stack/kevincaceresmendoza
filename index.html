@@ -3,9 +3,743 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Website in progress</title>
+  <meta name="theme-color" content="#f4f6f8">
+  <meta name="description" content="Kevin C. Mendoza is an Electronics Engineer and Electronics Technician focused on circuit design, PCB development, embedded systems, testing, and technical documentation.">
+  <meta property="og:title" content="Kevin C. Mendoza | Electronics Engineer">
+  <meta property="og:description" content="Engineering portfolio, selected projects, experience, and contact information.">
+  <title>Kevin C. Mendoza | Electronics Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f6f8;
+      --surface: #ffffff;
+      --ink: #172234;
+      --muted: #4d5b6d;
+      --soft: #e6ebf1;
+      --line: #d5dce5;
+      --blue: #1f55c8;
+      --blue-dark: #17439f;
+      --blue-pale: #e8eefb;
+      --navy: #14233a;
+      --green: #236b58;
+      --radius: 16px;
+      --content: 1160px;
+      --font: "DM Sans", "Aptos", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: #cbd9f7; color: #12213a; }
+    a { color: inherit; text-underline-offset: 4px; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 3px solid #7097ec;
+      outline-offset: 3px;
+    }
+    img, svg { max-width: 100%; }
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -60px;
+      z-index: 20;
+      padding: 10px 14px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 8px;
+    }
+    .skip-link:focus { top: 12px; }
+    .shell { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+    .site-header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(244, 246, 248, .96);
+    }
+    .header-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -.035em;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 13px;
+      letter-spacing: -.04em;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 2.5vw, 32px);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .nav a { text-decoration: none; }
+    .nav a:hover { color: var(--blue); }
+    .nav .nav-contact { color: var(--blue-dark); }
+    .hero { padding: clamp(64px, 9vw, 112px) 0 82px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr);
+      align-items: center;
+      gap: clamp(38px, 7vw, 88px);
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 26px;
+      font-size: clamp(3.2rem, 6.5vw, 5.9rem);
+      line-height: .99;
+      letter-spacing: -.055em;
+      font-weight: 700;
+    }
+    h1 .accent { color: var(--blue); }
+    .hero-copy {
+      max-width: 620px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: clamp(17px, 1.6vw, 19px);
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 19px;
+      border: 1px solid var(--blue);
+      border-radius: 9px;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font: 700 14px var(--font);
+      transition: background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+    .button:hover { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-1px); }
+    .button.secondary { background: transparent; color: var(--ink); border-color: #aeb9c8; }
+    .button.secondary:hover { background: #fff; border-color: var(--ink); }
+    .button svg { width: 16px; height: 16px; }
+    .hero-note { margin: 22px 0 0; color: var(--muted); font-size: 13px; }
+    .hero-visual {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background: #e8edf4;
+      border: 1px solid #d8e0ea;
+      border-radius: 22px;
+    }
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -100px;
+      top: -110px;
+      border: 1px solid #c5d0df;
+      border-radius: 50%;
+    }
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      left: -118px;
+      bottom: -118px;
+      border: 1px solid #c5d0df;
+      border-radius: 50%;
+    }
+    .circuit-art { position: relative; width: 100%; z-index: 1; }
+    .circuit-art .trace {
+      stroke-dasharray: 520;
+      stroke-dashoffset: 520;
+      animation: trace-in 1.4s cubic-bezier(.16, 1, .3, 1) .15s forwards;
+    }
+    .visual-caption {
+      position: absolute;
+      right: 24px;
+      bottom: 20px;
+      z-index: 2;
+      color: #51647d;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .15em;
+    }
+    @keyframes trace-in { to { stroke-dashoffset: 0; } }
+    .credentials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .credential {
+      padding: 24px 28px 24px 0;
+    }
+    .credential + .credential { border-left: 1px solid var(--line); padding-left: 28px; }
+    .credential dt {
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .credential dd { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.45; }
+    .section { padding: clamp(76px, 9vw, 116px) 0; }
+    .section-top {
+      display: grid;
+      grid-template-columns: minmax(180px, .7fr) minmax(0, 1.3fr);
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 46px;
+    }
+    .section h2 {
+      max-width: 540px;
+      margin-bottom: 0;
+      font-size: clamp(2.1rem, 4.2vw, 3.55rem);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+    .section-intro {
+      max-width: 650px;
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(260px, .95fr);
+      gap: 64px;
+      align-items: start;
+    }
+    .about-text p { max-width: 690px; color: var(--muted); }
+    .about-aside {
+      padding: 28px 30px;
+      background: var(--navy);
+      color: #f6f8fc;
+      border-radius: var(--radius);
+    }
+    .about-aside h3 { margin-bottom: 14px; font-size: 18px; letter-spacing: -.02em; }
+    .about-aside p { margin-bottom: 0; color: #d0d9e7; font-size: 14px; }
+    .experience { border-top: 1px solid var(--line); }
+    .experience-row {
+      display: grid;
+      grid-template-columns: minmax(170px, .55fr) minmax(0, 1.45fr);
+      gap: 52px;
+      padding: 30px 0 34px;
+      border-bottom: 1px solid var(--line);
+    }
+    .experience-meta { color: var(--muted); font-size: 13px; }
+    .experience-meta strong { display: block; margin-bottom: 5px; color: var(--ink); font-size: 15px; }
+    .experience-content h3 { margin-bottom: 7px; font-size: 20px; letter-spacing: -.025em; }
+    .experience-content p { color: var(--muted); margin-bottom: 14px; }
+    .plain-list { margin: 0; padding-left: 19px; color: var(--muted); }
+    .plain-list li { padding: 3px 0; }
+    .projects { border-top: 1px solid var(--line); }
+    .project-row {
+      display: grid;
+      grid-template-columns: 72px minmax(0, .92fr) minmax(220px, 1.08fr);
+      gap: 26px;
+      align-items: start;
+      padding: 28px 0 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .project-index { color: #75849a; font-size: 12px; font-weight: 700; letter-spacing: .1em; }
+    .project-name { margin: -4px 0 6px; font-size: 20px; line-height: 1.25; letter-spacing: -.03em; }
+    .project-type { color: var(--blue-dark); font-size: 12px; font-weight: 700; }
+    .project-description { margin: 0; color: var(--muted); font-size: 14px; }
+    .project-role { margin-top: 12px; color: var(--ink); font-size: 12px; font-weight: 700; }
+    .capability-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      gap: 70px;
+      align-items: start;
+    }
+    .capability-list { border-top: 1px solid var(--line); }
+    .capability {
+      display: grid;
+      grid-template-columns: 1fr 24px;
+      gap: 18px;
+      align-items: center;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .capability span:last-child { color: var(--blue); font-size: 18px; font-weight: 400; }
+    .software-line { margin-top: 30px; color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .software-line strong { color: var(--ink); }
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+    }
+    .education-grid h3 { margin-bottom: 8px; font-size: 18px; }
+    .education-grid p { margin-bottom: 7px; color: var(--muted); }
+    .education-grid .degree { color: var(--ink); font-weight: 700; }
+    .contact-section { padding: clamp(76px, 9vw, 110px) 0; background: var(--navy); color: #fff; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr);
+      gap: clamp(44px, 8vw, 100px);
+      align-items: start;
+    }
+    .contact-section h2 {
+      max-width: 520px;
+      margin-bottom: 20px;
+      font-size: clamp(2.6rem, 5vw, 4.7rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+    .contact-copy { max-width: 450px; color: #d0d9e7; }
+    .contact-details { display: grid; gap: 11px; margin-top: 30px; }
+    .contact-details a { width: fit-content; color: #fff; text-decoration-color: #7894c0; }
+    .contact-details a:hover { color: #a9c2fa; }
+    .contact-form {
+      padding: 30px;
+      border: 1px solid #344762;
+      border-radius: var(--radius);
+      background: #1a2b45;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: grid; gap: 7px; margin-bottom: 17px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #e6ebf2; font-size: 12px; font-weight: 700; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      border: 1px solid #52647d;
+      border-radius: 7px;
+      background: #101e32;
+      color: #fff;
+      padding: 12px 13px;
+      font: 14px var(--font);
+    }
+    .field input::placeholder, .field textarea::placeholder { color: #aab7c9; }
+    .field textarea { min-height: 118px; resize: vertical; }
+    .contact-form .button { border-color: #9bb8ff; background: #dce7ff; color: #152747; cursor: pointer; }
+    .contact-form .button:hover { background: #fff; border-color: #fff; }
+    .form-note { min-height: 22px; margin: 12px 0 0; color: #d0d9e7; font-size: 12px; }
+    .site-footer { padding: 22px 0; background: #0e1a2b; color: #c5cfdd; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; font-size: 12px; }
+    .footer-inner a { color: #fff; text-decoration-color: #667d9c; }
+
+    @media (max-width: 860px) {
+      .hero-grid, .about-layout, .capability-layout, .contact-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 42px; }
+      .hero-visual { min-height: 360px; }
+      .section-top { grid-template-columns: 1fr; gap: 18px; }
+      .section-intro { margin-top: 0; }
+      .capability-layout { gap: 34px; }
+      .contact-grid { gap: 38px; }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 36px, var(--content)); }
+      .header-inner { min-height: 72px; align-items: flex-start; flex-direction: column; gap: 10px; padding: 14px 0; }
+      .nav { width: 100%; overflow-x: auto; gap: 20px; padding-bottom: 3px; white-space: nowrap; }
+      .hero { padding-top: 58px; }
+      h1 { font-size: clamp(3rem, 14vw, 4.4rem); }
+      .hero-visual { min-height: 300px; padding: 16px; }
+      .credentials { grid-template-columns: 1fr; }
+      .credential, .credential + .credential { padding: 17px 0; border-left: 0; }
+      .credential + .credential { border-top: 1px solid var(--line); }
+      .experience-row { grid-template-columns: 1fr; gap: 12px; }
+      .project-row { grid-template-columns: 32px 1fr; gap: 12px 16px; }
+      .project-description { grid-column: 2; }
+      .education-grid { grid-template-columns: 1fr; gap: 28px; }
+      .contact-form { padding: 20px; }
+      .form-grid { grid-template-columns: 1fr; gap: 0; }
+      .field.full { grid-column: auto; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Website in progress.</h1>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="Kevin C. Mendoza, home">
+        <span class="brand-mark" aria-hidden="true">KM.</span>
+        <span>Kevin C. Mendoza</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#contact" class="nav-contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- SECTION: HERO -->
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div>
+          <h1>Engineering ideas into <span class="accent">working systems.</span></h1>
+          <p class="hero-copy">I'm Kevin C. Mendoza, an Electronics Engineer and Electronics Technician. I work across circuit design, PCB development, embedded systems, testing, and technical documentation.</p>
+          <div class="hero-actions">
+            <a class="button" href="#contact">
+              Contact me
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="button secondary" href="Mendoza_Kevin_Resume.pdf" download>
+              Download résumé
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v9m0 0 3.5-3.5M10 12 6.5 8.5M4 15.5v1h12v-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <p class="hero-note">Open to engineering opportunities and professional project inquiries.</p>
+        </div>
+
+        <div class="hero-visual" aria-label="Abstract circuit board line drawing">
+          <svg class="circuit-art" viewBox="0 0 520 390" role="img" aria-labelledby="circuit-title">
+            <title id="circuit-title">Circuit board geometry with a central integrated circuit</title>
+            <g fill="none" stroke="#8ca0bc" stroke-width="2">
+              <path class="trace" d="M24 78h92v44h58M24 284h82v-42h68M496 88h-84v50h-60M496 286h-84v-44h-60" />
+              <path class="trace" d="M72 32v34h70M72 358v-34h70M448 34v38h-70M448 356v-38h-70" />
+              <path class="trace" d="M24 180h80m312 0h80M260 20v48m0 254v48" />
+            </g>
+            <g fill="#e8edf4" stroke="#6f86a5" stroke-width="2">
+              <rect x="170" y="93" width="180" height="204" rx="9"/>
+              <rect x="202" y="130" width="116" height="130" rx="5" fill="#dce5f0"/>
+              <rect x="38" y="63" width="16" height="16" rx="3"/>
+              <rect x="38" y="276" width="16" height="16" rx="3"/>
+              <rect x="466" y="80" width="16" height="16" rx="3"/>
+              <rect x="466" y="278" width="16" height="16" rx="3"/>
+              <circle cx="72" cy="32" r="7"/>
+              <circle cx="72" cy="358" r="7"/>
+              <circle cx="448" cy="34" r="7"/>
+              <circle cx="448" cy="356" r="7"/>
+            </g>
+            <g stroke="#6f86a5" stroke-width="3" stroke-linecap="round">
+              <path d="M192 110v-16m25 16V94m25 16V94m25 16V94m25 16V94m25 16V94m25 16V94"/>
+              <path d="M192 280v16m25-16v16m25-16v16m25-16v16m25-16v16m25-16v16m25-16v16"/>
+              <path d="M170 148h-16m16 25h-16m16 25h-16m16 25h-16m16 25h-16"/>
+              <path d="M350 148h16m-16 25h16m-16 25h16m-16 25h16m-16 25h16"/>
+            </g>
+            <g fill="none" stroke="#1f55c8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M224 167h72v54h-72z"/>
+              <path d="M239 183h42m-42 13h42m-42 13h26"/>
+              <path d="M296 194h18"/>
+            </g>
+            <g fill="#1f55c8">
+              <circle cx="296" cy="194" r="4"/>
+              <circle cx="104" cy="180" r="4"/>
+              <circle cx="416" cy="180" r="4"/>
+              <circle cx="260" cy="68" r="4"/>
+              <circle cx="260" cy="322" r="4"/>
+            </g>
+            <g fill="#53677f" font-family="DM Sans, sans-serif" font-size="10" font-weight="700" letter-spacing="2">
+              <text x="260" y="153" text-anchor="middle">CONTROL</text>
+              <text x="260" y="246" text-anchor="middle">MODULE</text>
+            </g>
+          </svg>
+          <span class="visual-caption">DESIGN · TEST · BUILD</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell">
+      <dl class="credentials" aria-label="Professional highlights">
+        <div class="credential">
+          <dt>Education</dt>
+          <dd>B.S. Electronics Engineering</dd>
+        </div>
+        <div class="credential">
+          <dt>Academic distinction</dt>
+          <dd>Magna Cum Laude · Class Valedictorian</dd>
+        </div>
+        <div class="credential">
+          <dt>Professional credentials</dt>
+          <dd>Electronics Engineer · Electronics Technician</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- SECTION: ABOUT -->
+    <section class="section" id="about">
+      <div class="shell">
+        <div class="section-top">
+          <h2>Engineering with a hands-on approach.</h2>
+          <p class="section-intro">I combine practical engineering work with careful documentation and a willingness to learn new tools. My experience includes prototype test setups, schematic reviews, circuit documentation, and troubleshooting support.</p>
+        </div>
+        <div class="about-layout">
+          <div class="about-text">
+            <p>I graduated from Rogationist College with a Bachelor of Science in Electronics Engineering, earning Magna Cum Laude honors and graduating as Class Valedictorian for Batch 2026. My thesis focused on an IoT-based wearable wristband for emergency monitoring of employees with comorbidity.</p>
+            <p>During my internship at Neocircuits, I supported the engineering team with prototype validation, component evaluation, schematic checks, technical files, and test reports. I enjoy work that moves from an idea or drawing to a circuit or device that can be tested.</p>
+          </div>
+          <aside class="about-aside">
+            <h3>How I work</h3>
+            <p>I take part in the coding, design, and build stages of engineering projects. I value clear communication, organized records, practical testing, and collaboration with the people developing the system.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="shell">
+        <div class="section-top">
+          <h2>Experience in an engineering environment.</h2>
+          <p class="section-intro">My internship gave me practical exposure to prototype validation and the documentation that supports engineering development.</p>
+        </div>
+        <div class="experience">
+          <article class="experience-row">
+            <div class="experience-meta">
+              <strong>Neocircuits</strong>
+              Sampaloc I, Dasmariñas City
+              <br>June 2025 – August 2025
+            </div>
+            <div class="experience-content">
+              <h3>Engineering Intern</h3>
+              <p>Supported engineering staff with testing, schematic review, technical documentation, and development tasks.</p>
+              <ul class="plain-list">
+                <li>Assembled test setups for prototype validation and component evaluation.</li>
+                <li>Reviewed schematics for consistency, completeness, and design-rule compliance.</li>
+                <li>Assisted with PCB and hardware troubleshooting during development cycles.</li>
+                <li>Recorded laboratory results and organized technical files for team reference.</li>
+                <li>Prepared reports that summarized testing observations and design feedback.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PROJECTS -->
+    <section class="section" id="projects">
+      <div class="shell">
+        <div class="section-top">
+          <h2>Selected engineering work.</h2>
+          <p class="section-intro">A selection of academic and practical projects across embedded systems, PCB design, CAD, and circuit simulation. My contributions have included coding, design, and building.</p>
+        </div>
+        <div class="projects">
+          <article class="project-row">
+            <div class="project-index">01</div>
+            <div>
+              <h3 class="project-name">IoT-Based Wearable Wristband</h3>
+              <span class="project-type">THESIS · IOT · EMBEDDED SYSTEMS</span>
+            </div>
+            <div>
+              <p class="project-description">A thesis project focused on an IoT-based wearable wristband for emergency monitoring of employees with comorbidity at Rogationist College.</p>
+              <p class="project-role">Contribution: coding · design · build</p>
+            </div>
+          </article>
+          <article class="project-row">
+            <div class="project-index">02</div>
+            <div>
+              <h3 class="project-name">Arduino Sumo Robot</h3>
+              <span class="project-type">MICROCONTROLLERS · ROBOTICS</span>
+            </div>
+            <div>
+              <p class="project-description">A team engineering project using Arduino for robot control, combining programming, system design, and physical assembly.</p>
+              <p class="project-role">Contribution: coding · design · build</p>
+            </div>
+          </article>
+          <article class="project-row">
+            <div class="project-index">03</div>
+            <div>
+              <h3 class="project-name">PCB Design Work</h3>
+              <span class="project-type">ALTIUM DESIGNER · PCB</span>
+            </div>
+            <div>
+              <p class="project-description">Printed circuit board design exercises and layouts developed with Altium Designer.</p>
+              <p class="project-role">Contribution: design · development</p>
+            </div>
+          </article>
+          <article class="project-row">
+            <div class="project-index">04</div>
+            <div>
+              <h3 class="project-name">AutoCAD Technical Drawings</h3>
+              <span class="project-type">AUTOCAD · ENGINEERING DESIGN</span>
+            </div>
+            <div>
+              <p class="project-description">Engineering drawing and design work created using AutoCAD.</p>
+              <p class="project-role">Contribution: design · drafting</p>
+            </div>
+          </article>
+          <article class="project-row">
+            <div class="project-index">05</div>
+            <div>
+              <h3 class="project-name">Digital Logic Gate Projects</h3>
+              <span class="project-type">NI MULTISIM · CIRCUIT SIMULATION</span>
+            </div>
+            <div>
+              <p class="project-description">Digital logic gate and circuit simulation projects completed using NI Multisim.</p>
+              <p class="project-role">Contribution: circuit design · simulation</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CAPABILITIES -->
+    <section class="section" id="capabilities">
+      <div class="shell capability-layout">
+        <div>
+          <h2>Ways I can support your team or project.</h2>
+          <p class="section-intro">I’m interested in engineering roles and project work that draw on my electronics background and hands-on technical skills.</p>
+          <p class="software-line"><strong>Tools:</strong> Altium Designer · AutoCAD · NI Multisim · Arduino</p>
+        </div>
+        <div class="capability-list" aria-label="Technical capabilities">
+          <div class="capability"><span>Circuit and PCB design</span><span aria-hidden="true">↗</span></div>
+          <div class="capability"><span>Schematic review and circuit testing</span><span aria-hidden="true">↗</span></div>
+          <div class="capability"><span>PCB and hardware troubleshooting</span><span aria-hidden="true">↗</span></div>
+          <div class="capability"><span>Embedded systems and microcontroller development</span><span aria-hidden="true">↗</span></div>
+          <div class="capability"><span>Technical documentation</span><span aria-hidden="true">↗</span></div>
+          <div class="capability"><span>AutoCAD engineering drawings</span><span aria-hidden="true">↗</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: EDUCATION -->
+    <section class="section" id="education">
+      <div class="shell">
+        <div class="section-top">
+          <h2>Education and credentials.</h2>
+          <p class="section-intro">A foundation in electronics engineering, supported by academic distinction and professional credentials.</p>
+        </div>
+        <div class="education-grid">
+          <div>
+            <h3>Rogationist College</h3>
+            <p class="degree">Bachelor of Science in Electronics Engineering</p>
+            <p>Silang, Cavite · April 2026</p>
+            <p>Magna Cum Laude · Class Valedictorian, Batch 2026</p>
+          </div>
+          <div>
+            <h3>Professional credentials</h3>
+            <p class="degree">Electronics Engineer</p>
+            <p>Licensed · October 2026</p>
+            <p class="degree">Electronics Technician</p>
+            <p>Licensed · March 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CONTACT -->
+    <section class="contact-section" id="contact">
+      <div class="shell contact-grid">
+        <div>
+          <h2>Let’s talk about your next opportunity.</h2>
+          <p class="contact-copy">Are you hiring for an electronics engineering role or looking for technical support on a project? Send me a message and tell me what you have in mind.</p>
+          <div class="contact-details">
+            <a href="mailto:kevincaceresmendoza@gmail.com">kevincaceresmendoza@gmail.com</a>
+            <a href="tel:+639989294368">+63 998 929 4368</a>
+            <span>Dasmariñas City, Cavite, Philippines</span>
+            <a href="https://www.linkedin.com/in/kevin-mendoza-4486a8446" target="_blank" rel="noopener noreferrer">LinkedIn profile ↗</a>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Name" required>
+            </div>
+            <div class="field">
+              <label for="email">Your email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+            </div>
+            <div class="field full">
+              <label for="reason">I'm contacting you about</label>
+              <select id="reason" name="reason">
+                <option>Job opportunity</option>
+                <option>Professional services</option>
+                <option>Engineering project</option>
+                <option>Other inquiry</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me a little about the role or project..." required></textarea>
+            </div>
+          </div>
+          <button class="button" type="submit">
+            Prepare email
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-note" id="form-status" aria-live="polite">This form opens your email app with the message filled in. It does not send automatically.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- SECTION: FOOTER -->
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span>© <span id="year">2026</span> Kevin C. Mendoza</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var year = document.getElementById("year");
+      if (year) year.textContent = String(new Date().getFullYear());
+
+      var form = document.getElementById("contact-form");
+      var status = document.getElementById("form-status");
+      if (!form) return;
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        var name = document.getElementById("name").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var reason = document.getElementById("reason").value;
+        var message = document.getElementById("message").value.trim();
+        var subject = encodeURIComponent(reason + " | Website inquiry from " + name);
+        var body = encodeURIComponent(
+          "Name: " + name + "\n" +
+          "Email: " + email + "\n" +
+          "Inquiry: " + reason + "\n\n" +
+          message
+        );
+
+        if (status) status.textContent = "Opening your email app. Review the message and send it from there.";
+        window.location.href = "mailto:kevincaceresmendoza@gmail.com?subject=" + subject + "&body=" + body;
+      });
+    }());
+  </script>
 </body>
 </html>
