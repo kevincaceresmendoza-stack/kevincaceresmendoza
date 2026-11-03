@@ -28,7 +28,7 @@ Hero with contact and résumé actions; professional highlights; about; internsh
 Direct first-person writing. Prioritize recruiter-facing qualifications and hands-on engineering work. Distinguish documented experience from project contributions.
 
 ## Assets
-Web-ready résumé PDF `Mendoza_Kevin_Resume.pdf` is committed to the repository root and linked from the hero section. No authentic project photos, PCB screenshots, CAD drawings, simulation captures, or prototype images have been supplied yet; do not fabricate these as portfolio evidence.
+Web-ready résumé PDF `Mendoza_Kevin_Resume.pdf` is committed to the repository root and linked from the hero section. User explicitly prefers a concept-focused, text-only project presentation. Do not add the supplied project images or use stock imagery. Describe project objectives, concepts, tools, and known contributions without inventing technical specifications or outcomes.
 
 ## Functionality
 Responsive single-file HTML page. Contact form opens a prefilled email draft to kevincaceresmendoza@gmail.com; it does not submit to a backend. LinkedIn, email, phone, and résumé links are included. The live deployment URL is recorded above.
