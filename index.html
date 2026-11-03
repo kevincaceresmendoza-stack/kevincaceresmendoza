@@ -596,17 +596,252 @@
     }
 
   </style>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+    :root {
+      color-scheme: light;
+      --paper: #f6f4ee;
+      --surface: #fbfaf6;
+      --ink: #202720;
+      --muted: #687168;
+      --line: #d9ddd3;
+      --accent: #526b56;
+      --accent-dark: #344a38;
+      --soft: #e9ede5;
+      --serif: "Newsreader", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --mono: "IBM Plex Mono", monospace;
+      --content: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
+    ::selection { background: #d8e0d4; color: var(--ink); }
+    .shell { width: min(var(--content), calc(100% - 72px)); }
+    .reading-progress { position: fixed; inset: 0 0 auto; height: 2px; z-index: 60; pointer-events: none; }
+    .reading-progress span { display: block; width: 0; height: 100%; background: var(--accent); }
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(246,244,238,.94); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner { min-height: 76px; gap: 28px; }
+    .brand { font-size: 13px; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--accent); color: #fff; font: 500 11px var(--mono);
+    }
+    .nav { gap: clamp(14px, 2.1vw, 27px); font-size: 11px; letter-spacing: .025em; }
+    .nav a { position: relative; padding: 8px 0; color: var(--muted); transition: color .2s ease; }
+    .nav a:hover, .nav a.is-current { color: var(--accent-dark); }
+    .nav a::after { content:""; position:absolute; left:0; right:100%; bottom:2px; height:1px; background:var(--accent); transition:right .22s ease; }
+    .nav a:hover::after, .nav a.is-current::after { right:0; }
+    .nav .nav-contact { color: var(--accent-dark); }
+    .menu-toggle { display:none; border:1px solid var(--line); background:transparent; width:40px; height:40px; border-radius:50%; cursor:pointer; }
+    .menu-toggle span { display:block; width:15px; height:1px; background:var(--ink); margin:5px auto; transition:transform .2s ease; }
+    .menu-toggle[aria-expanded="true"] span:first-child { transform:translateY(3px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:last-child { transform:translateY(-3px) rotate(-45deg); }
+
+    .hero { padding: clamp(80px, 11vw, 150px) 0 76px; }
+    .hero-grid { grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr); gap: clamp(48px, 8vw, 120px); align-items:end; }
+    .hero-grid > div:first-child::before {
+      content:"ELECTRONICS ENGINEERING / PORTFOLIO";
+      display:block; margin-bottom:28px; color:var(--accent);
+      font:500 10px var(--mono); letter-spacing:.16em;
+    }
+    h1 {
+      max-width: 820px; margin-bottom: 27px;
+      font: 400 clamp(3.8rem, 8.3vw, 7.6rem)/.91 var(--serif);
+      letter-spacing: -.065em;
+    }
+    h1 .accent { color:var(--accent); font-style:italic; }
+    .hero-role { margin:0 0 24px; color:var(--accent-dark); font:500 10px var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+    .hero-copy { max-width:650px; color:#586258; font-size:16px; line-height:1.85; }
+    .hero-actions { gap:18px; }
+    .button {
+      min-height:47px; padding:0 21px; border-radius:2px; border-color:var(--accent);
+      background:var(--accent); font-size:12px; letter-spacing:.015em;
+      transition:background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .button:hover { background:var(--accent-dark); border-color:var(--accent-dark); transform:translateY(-2px); }
+    .button.secondary { border-color:#aeb8aa; color:var(--ink); }
+    .button.secondary:hover { background:var(--soft); border-color:var(--accent); }
+    .hero-note { margin-top:24px; color:var(--muted); font-size:11px; }
+    .hero-aside {
+      position:relative; padding:27px 0 8px 28px; border-left:1px solid var(--line);
+      align-self:stretch; display:flex; flex-direction:column; justify-content:flex-end;
+    }
+    .aside-index, .aside-foot { color:var(--muted); font:10px var(--mono); letter-spacing:.12em; }
+    .aside-mark { margin:22px 0 20px; color:var(--accent); font:400 clamp(3.6rem,6vw,5.4rem)/.82 var(--serif); letter-spacing:-.07em; }
+    .aside-mark span { color:#b6bdb2; padding:0 7px; font-size:.65em; }
+    .aside-rule { width:100%; height:1px; background:var(--line); margin-bottom:20px; }
+    .hero-aside dl { margin:0 0 34px; display:grid; gap:16px; }
+    .hero-aside dl div { display:grid; grid-template-columns:76px 1fr; gap:12px; }
+    .hero-aside dt { color:var(--muted); font:9px var(--mono); letter-spacing:.1em; }
+    .hero-aside dd { margin:0; font-size:12px; font-weight:600; line-height:1.5; }
+    .credentials { border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .credential { padding:22px 24px 22px 0; }
+    .credential dt { color:var(--accent); font:10px var(--mono); letter-spacing:.12em; }
+    .credential dd { font-size:13px; font-weight:600; }
+
+    .section { padding:clamp(76px,9vw,118px) 0; }
+    .section:nth-of-type(even) { background:transparent; }
+    .section-top { grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(35px,8vw,110px); margin-bottom:48px; }
+    .section-top::before { content:""; }
+    .section h2, .capability-layout h2 {
+      font:400 clamp(2.8rem,5.2vw,4.8rem)/.98 var(--serif); letter-spacing:-.055em;
+    }
+    .section-intro { max-width:580px; color:var(--muted); font-size:15px; line-height:1.9; }
+    .about-layout { grid-template-columns:1.1fr .9fr; gap:clamp(45px,9vw,130px); }
+    .about-text p { color:#59645b; font-size:15px; line-height:1.95; }
+    .about-aside {
+      padding:27px 0 0 27px; border:0; border-left:1px solid var(--line);
+      border-radius:0; background:transparent; box-shadow:none;
+    }
+    .about-aside::after { display:none; }
+    .about-aside h3 { color:var(--accent); font:500 10px var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+    .about-aside p { color:var(--muted); font:400 21px/1.55 var(--serif); }
+    #experience { border-top:1px solid var(--line); }
+    .experience { border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .experience-row { grid-template-columns:.65fr 1.35fr; gap:55px; padding:34px 0; border:0; }
+    .experience-meta { color:var(--muted); font-size:11px; line-height:1.9; }
+    .experience-meta strong { display:block; color:var(--accent-dark); font:500 17px var(--serif); }
+    .experience-content h3 { margin-bottom:12px; font:500 27px var(--serif); }
+    .experience-content > p, .plain-list { color:var(--muted); font-size:13px; line-height:1.85; }
+    .plain-list { padding-left:18px; }
+    .plain-list li { padding-left:4px; margin:6px 0; }
+
+    #projects { background:#eeeee7; }
+    #projects .section-top { margin-bottom:35px; }
+    .projects { border-top:1px solid #cdd2c8; gap:0; }
+    .project-row {
+      display:block; min-height:0; padding:0; border:0; border-bottom:1px solid #cdd2c8;
+      border-radius:0; background:transparent; box-shadow:none; transition:background .2s ease;
+    }
+    .project-row:hover { transform:none; border-color:#aeb8aa; box-shadow:none; background:rgba(255,255,255,.36); }
+    .project-row summary {
+      list-style:none; display:grid; grid-template-columns:58px minmax(0,1fr) 115px;
+      gap:22px; align-items:center; padding:24px 12px 24px 0; cursor:pointer;
+    }
+    .project-row summary::-webkit-details-marker { display:none; }
+    .project-index { width:auto; height:auto; border-radius:0; background:transparent; color:var(--accent); font:11px var(--mono); }
+    .project-heading { display:grid; gap:5px; }
+    .project-name { color:var(--ink); font:500 clamp(21px,2.5vw,29px)/1.1 var(--serif); }
+    .project-type { color:var(--muted); font:9px var(--mono); letter-spacing:.09em; }
+    .project-toggle { display:flex; align-items:center; justify-content:flex-end; gap:12px; color:var(--muted); font:10px var(--mono); }
+    .project-toggle span { color:var(--accent); font-size:19px; transition:transform .2s ease; }
+    .project-row[open] .project-toggle span { transform:rotate(45deg); }
+    .project-detail { display:grid; grid-template-columns:58px minmax(0,1fr); gap:22px; padding:0 12px 27px 0; }
+    .project-detail > p { grid-column:2; max-width:680px; margin:0; color:var(--muted); font-size:13px; line-height:1.9; }
+    .project-detail .project-role { margin-top:-10px; color:var(--accent-dark); font-size:11px; font-weight:600; }
+
+    .capability-layout { display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(45px,8vw,110px); }
+    .capability-layout h2 { margin-bottom:22px; }
+    .capability-layout .section-intro { margin-bottom:30px; }
+    .software-line { color:var(--muted); font-size:11px; line-height:1.8; }
+    .software-line strong { color:var(--accent-dark); }
+    .capability-groups { display:grid; grid-template-columns:1fr 1fr; gap:0 28px; }
+    .skill-group { padding:22px 0; border-top:1px solid var(--line); border-radius:0; background:transparent; }
+    .skill-kicker { color:var(--accent); font:9px var(--mono); letter-spacing:.1em; }
+    .skill-group h3 { margin:13px 0 8px; font:500 23px var(--serif); }
+    .skill-group p { color:var(--muted); font-size:12px; line-height:1.8; }
+    .skill-tags { gap:6px; }
+    .skill-tags span { padding:4px 0; margin-right:12px; border:0; border-radius:0; background:none; color:var(--accent-dark); font:10px var(--mono); }
+    .education-grid { grid-template-columns:1fr 1fr; gap:50px; border:0; padding:0; }
+    .education-grid > div { padding:25px 0 0; border:0; border-top:1px solid var(--line); border-radius:0; background:transparent; }
+    .education-grid h3 { font:500 26px var(--serif); }
+    .education-grid p { color:var(--muted); font-size:12px; line-height:1.8; }
+    .education-grid .degree { color:var(--accent-dark); font-weight:600; }
+
+    .contact-section { padding:clamp(75px,9vw,115px) 0; background:#263a2d; color:#f6f4ee; }
+    .contact-grid { grid-template-columns:1fr .9fr; gap:clamp(40px,8vw,100px); }
+    .contact-section h2 { max-width:570px; font:400 clamp(3rem,5.8vw,5.4rem)/.95 var(--serif); letter-spacing:-.055em; }
+    .contact-copy { max-width:510px; color:#c5d0c4; font-size:14px; line-height:1.9; }
+    .contact-details { gap:12px; margin-top:32px; }
+    .contact-details a, .contact-details span { color:#e0e7dc; font-size:12px; }
+    .contact-details a:hover { color:#fff; }
+    .contact-form { padding:28px; border:1px solid rgba(246,244,238,.2); border-radius:2px; background:rgba(255,255,255,.045); }
+    .field label { color:#e0e7dc; font:10px var(--mono); letter-spacing:.05em; }
+    .field input, .field select, .field textarea {
+      border:0; border-bottom:1px solid rgba(246,244,238,.35); border-radius:0;
+      background:transparent; color:#fff; padding:12px 0; font:13px var(--sans);
+    }
+    .field input::placeholder, .field textarea::placeholder { color:#aebbad; }
+    .field select option { color:#202720; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline:0; border-bottom-color:#d8e2d3; box-shadow:0 1px 0 #d8e2d3; }
+    .contact-form .button { margin-top:20px; border-color:#f6f4ee; background:#f6f4ee; color:#263a2d; }
+    .contact-form .button:hover { background:#dce5d8; border-color:#dce5d8; }
+    .form-note { color:#b7c4b5; font-size:10px; }
+    .site-footer { background:#1b2a20; border-top:1px solid rgba(255,255,255,.12); }
+    .footer-inner { color:#c1cbbf; font-size:10px; }
+    .footer-inner a { color:#e6ece2; }
+
+    .will-reveal { opacity:0; transform:translateY(16px); transition:opacity .6s ease,transform .6s ease; }
+    .will-reveal.is-visible { opacity:1; transform:translateY(0); }
+    @media (max-width:900px) {
+      .hero-grid { grid-template-columns:1fr minmax(210px,.55fr); gap:42px; }
+      .section-top { gap:35px; }
+      .capability-layout { grid-template-columns:1fr; }
+    }
+    @media (max-width:700px) {
+      .shell { width:calc(100% - 40px); }
+      .header-inner { min-height:68px; flex-direction:row; flex-wrap:wrap; gap:10px; }
+      .menu-toggle { display:block; margin-left:auto; }
+      .nav {
+        display:none; position:absolute; top:100%; left:0; right:0; padding:12px 20px 18px;
+        background:var(--paper); border-bottom:1px solid var(--line); box-shadow:0 15px 25px rgba(25,35,25,.08);
+        flex-direction:column; align-items:stretch; gap:0;
+      }
+      .nav.is-open { display:flex; }
+      .nav a { padding:11px 0; }
+      .nav a::after { display:none; }
+      .hero { padding:70px 0 55px; }
+      .hero-grid { grid-template-columns:1fr; gap:45px; }
+      h1 { font-size:clamp(3.5rem,15vw,5.4rem); }
+      .hero-aside { padding:20px 0 0; border-left:0; border-top:1px solid var(--line); }
+      .aside-mark { margin:17px 0; font-size:4rem; }
+      .hero-aside dl { grid-template-columns:1fr 1fr; gap:14px; margin-bottom:22px; }
+      .hero-aside dl div { grid-template-columns:1fr; gap:4px; }
+      .credentials { grid-template-columns:1fr; }
+      .credential, .credential + .credential { padding:17px 0; border-left:0; border-bottom:1px solid var(--line); }
+      .credential:last-child { border-bottom:0; }
+      .section-top { grid-template-columns:1fr; gap:18px; margin-bottom:34px; }
+      .section h2, .capability-layout h2 { font-size:clamp(2.7rem,12vw,4rem); }
+      .about-layout, .experience-row, .education-grid, .contact-grid { grid-template-columns:1fr; gap:28px; }
+      .about-aside { padding:20px 0 0; border-left:0; border-top:1px solid var(--line); }
+      .experience-meta { margin-bottom:0; }
+      .project-row summary { grid-template-columns:34px minmax(0,1fr) 28px; gap:12px; padding:21px 0; }
+      .project-toggle { font-size:0; }
+      .project-toggle span { font-size:20px; }
+      .project-detail { grid-template-columns:34px minmax(0,1fr); gap:12px; }
+      .project-detail > p { grid-column:2; }
+      .capability-groups { grid-template-columns:1fr; }
+      .contact-form { padding:22px 18px; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      .will-reveal { opacity:1; transform:none; transition:none; }
+      *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+    }
+  </style>
+
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="#top" aria-label="Kevin C. Mendoza, home">
         <span class="brand-mark" aria-hidden="true">KM.</span>
         <span>Kevin C. Mendoza</span>
       </a>
-      <nav class="nav" aria-label="Main navigation">
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
@@ -638,51 +873,17 @@
           <p class="hero-note">Available for engineering opportunities · Open to selected technical projects</p>
         </div>
 
-        <div class="hero-visual" aria-label="Abstract circuit board line drawing">
-          <svg class="circuit-art" viewBox="0 0 520 390" role="img" aria-labelledby="circuit-title">
-            <title id="circuit-title">Circuit board geometry with a central integrated circuit</title>
-            <g fill="none" stroke="#8ca0bc" stroke-width="2">
-              <path class="trace" d="M24 78h92v44h58M24 284h82v-42h68M496 88h-84v50h-60M496 286h-84v-44h-60" />
-              <path class="trace" d="M72 32v34h70M72 358v-34h70M448 34v38h-70M448 356v-38h-70" />
-              <path class="trace" d="M24 180h80m312 0h80M260 20v48m0 254v48" />
-            </g>
-            <g fill="#e8edf4" stroke="#6f86a5" stroke-width="2">
-              <rect x="170" y="93" width="180" height="204" rx="9"/>
-              <rect x="202" y="130" width="116" height="130" rx="5" fill="#dce5f0"/>
-              <rect x="38" y="63" width="16" height="16" rx="3"/>
-              <rect x="38" y="276" width="16" height="16" rx="3"/>
-              <rect x="466" y="80" width="16" height="16" rx="3"/>
-              <rect x="466" y="278" width="16" height="16" rx="3"/>
-              <circle cx="72" cy="32" r="7"/>
-              <circle cx="72" cy="358" r="7"/>
-              <circle cx="448" cy="34" r="7"/>
-              <circle cx="448" cy="356" r="7"/>
-            </g>
-            <g stroke="#6f86a5" stroke-width="3" stroke-linecap="round">
-              <path d="M192 110v-16m25 16V94m25 16V94m25 16V94m25 16V94m25 16V94m25 16V94"/>
-              <path d="M192 280v16m25-16v16m25-16v16m25-16v16m25-16v16m25-16v16m25-16v16"/>
-              <path d="M170 148h-16m16 25h-16m16 25h-16m16 25h-16m16 25h-16"/>
-              <path d="M350 148h16m-16 25h16m-16 25h16m-16 25h16m-16 25h16"/>
-            </g>
-            <g fill="none" stroke="#1f55c8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M224 167h72v54h-72z"/>
-              <path d="M239 183h42m-42 13h42m-42 13h26"/>
-              <path d="M296 194h18"/>
-            </g>
-            <g fill="#1f55c8">
-              <circle cx="296" cy="194" r="4"/>
-              <circle cx="104" cy="180" r="4"/>
-              <circle cx="416" cy="180" r="4"/>
-              <circle cx="260" cy="68" r="4"/>
-              <circle cx="260" cy="322" r="4"/>
-            </g>
-            <g fill="#53677f" font-family="DM Sans, sans-serif" font-size="10" font-weight="700" letter-spacing="2">
-              <text x="260" y="153" text-anchor="middle">CONTROL</text>
-              <text x="260" y="246" text-anchor="middle">MODULE</text>
-            </g>
-          </svg>
-          <span class="visual-caption">DESIGN · TEST · BUILD</span>
-        </div>
+        <aside class="hero-aside" aria-label="Professional profile">
+          <span class="aside-index">PROFILE / 2026</span>
+          <p class="aside-mark">ECE<span>/</span>ECT</p>
+          <div class="aside-rule"></div>
+          <dl>
+            <div><dt>FIELD</dt><dd>Electronics Engineering</dd></div>
+            <div><dt>FOCUS</dt><dd>Design · Development · Testing</dd></div>
+            <div><dt>BASED IN</dt><dd>Cavite, Philippines</dd></div>
+          </dl>
+          <span class="aside-foot">KEVIN C. MENDOZA</span>
+        </aside>
       </div>
     </section>
 
@@ -761,61 +962,66 @@
           <p class="section-intro">A selection of academic and practical work across embedded systems, robotics, PCB design, CAD, and circuit simulation. Presented through the engineering problem space, tools, and development focus—without stock or project imagery.</p>
         </div>
         <div class="projects">
-          <article class="project-row">
-            <div class="project-index">01</div>
-            <div>
-              <h3 class="project-name">IoT-Based Wearable Wristband</h3>
-              <span class="project-type">THESIS · IOT · EMBEDDED SYSTEMS</span>
-            </div>
-            <div>
-              <p class="project-description">A wearable health-monitoring concept designed to support emergency monitoring of employees with comorbidity at Rogationist College. The thesis explores how a wrist-worn device and IoT connectivity can form part of a connected monitoring system.</p>
-              <p class="project-role">Contribution: coding · design · build</p>
-            </div>
-          </article>
-          <article class="project-row">
-            <div class="project-index">02</div>
-            <div>
-              <h3 class="project-name">Arduino Sumo Robot</h3>
-              <span class="project-type">MICROCONTROLLERS · ROBOTICS</span>
-            </div>
-            <div>
-              <p class="project-description">A robotics project centered on an Arduino-controlled sumo robot. The concept brings together microcontroller-based control, mechanical assembly, and the coordination of electronic and physical components for a competitive robot.</p>
-              <p class="project-role">Contribution: coding · design · build</p>
-            </div>
-          </article>
-          <article class="project-row">
-            <div class="project-index">03</div>
-            <div>
-              <h3 class="project-name">PCB Design Work</h3>
-              <span class="project-type">ALTIUM DESIGNER · PCB</span>
-            </div>
-            <div>
-              <p class="project-description">PCB design work using Altium Designer, focused on translating electronic circuit requirements into organized schematic and board-layout concepts.</p>
-              <p class="project-role">Contribution: design · development</p>
-            </div>
-          </article>
-          <article class="project-row">
-            <div class="project-index">04</div>
-            <div>
-              <h3 class="project-name">AutoCAD Technical Drawings</h3>
-              <span class="project-type">AUTOCAD · ENGINEERING DESIGN</span>
-            </div>
-            <div>
-              <p class="project-description">Technical drawing concepts developed in AutoCAD, emphasizing the communication of engineering layouts and design details through precise digital drafting.</p>
-              <p class="project-role">Contribution: design · drafting</p>
-            </div>
-          </article>
-          <article class="project-row">
-            <div class="project-index">05</div>
-            <div>
-              <h3 class="project-name">Digital Logic Gate Projects</h3>
-              <span class="project-type">NI MULTISIM · CIRCUIT SIMULATION</span>
-            </div>
-            <div>
-              <p class="project-description">Digital logic concepts explored through NI Multisim, using circuit simulation to examine gate configurations and the behavior of logic circuits.</p>
-              <p class="project-role">Contribution: circuit design · simulation</p>
-            </div>
-          </article>
+          <details class="project-row">
+            <summary>
+              <span class="project-index">01</span>
+              <span class="project-heading">
+                <span class="project-name">IoT-Based Wearable Wristband</span>
+                <span class="project-type">THESIS · IOT · EMBEDDED SYSTEMS</span>
+              </span>
+              <span class="project-toggle" aria-hidden="true">Explore <span>＋</span></span>
+            </summary>
+            <div class="project-detail"><p class="project-description">A wearable health-monitoring concept designed to support emergency monitoring of employees with comorbidity at Rogationist College. The thesis explores how a wrist-worn device and IoT connectivity can form part of a connected monitoring system.</p>
+              <p class="project-role">Contribution: coding · design · build</p></div>
+          </details>
+          <details class="project-row">
+            <summary>
+              <span class="project-index">02</span>
+              <span class="project-heading">
+                <span class="project-name">Arduino Sumo Robot</span>
+                <span class="project-type">MICROCONTROLLERS · ROBOTICS</span>
+              </span>
+              <span class="project-toggle" aria-hidden="true">Explore <span>＋</span></span>
+            </summary>
+            <div class="project-detail"><p class="project-description">A robotics project centered on an Arduino-controlled sumo robot. The concept brings together microcontroller-based control, mechanical assembly, and the coordination of electronic and physical components for a competitive robot.</p>
+              <p class="project-role">Contribution: coding · design · build</p></div>
+          </details>
+          <details class="project-row">
+            <summary>
+              <span class="project-index">03</span>
+              <span class="project-heading">
+                <span class="project-name">PCB Design Work</span>
+                <span class="project-type">ALTIUM DESIGNER · PCB</span>
+              </span>
+              <span class="project-toggle" aria-hidden="true">Explore <span>＋</span></span>
+            </summary>
+            <div class="project-detail"><p class="project-description">PCB design work using Altium Designer, focused on translating electronic circuit requirements into organized schematic and board-layout concepts.</p>
+              <p class="project-role">Contribution: design · development</p></div>
+          </details>
+          <details class="project-row">
+            <summary>
+              <span class="project-index">04</span>
+              <span class="project-heading">
+                <span class="project-name">AutoCAD Technical Drawings</span>
+                <span class="project-type">AUTOCAD · ENGINEERING DESIGN</span>
+              </span>
+              <span class="project-toggle" aria-hidden="true">Explore <span>＋</span></span>
+            </summary>
+            <div class="project-detail"><p class="project-description">Technical drawing concepts developed in AutoCAD, emphasizing the communication of engineering layouts and design details through precise digital drafting.</p>
+              <p class="project-role">Contribution: design · drafting</p></div>
+          </details>
+          <details class="project-row">
+            <summary>
+              <span class="project-index">05</span>
+              <span class="project-heading">
+                <span class="project-name">Digital Logic Gate Projects</span>
+                <span class="project-type">NI MULTISIM · CIRCUIT SIMULATION</span>
+              </span>
+              <span class="project-toggle" aria-hidden="true">Explore <span>＋</span></span>
+            </summary>
+            <div class="project-detail"><p class="project-description">Digital logic concepts explored through NI Multisim, using circuit simulation to examine gate configurations and the behavior of logic circuits.</p>
+              <p class="project-role">Contribution: circuit design · simulation</p></div>
+          </details>
         </div>
       </div>
     </section>
@@ -967,5 +1173,72 @@
       });
     }());
   </script>
+
+  <script>
+    (() => {
+      const menuButton = document.getElementById("menu-toggle");
+      const nav = document.getElementById("primary-nav");
+      const navLinks = [...document.querySelectorAll(".nav a")];
+      const progress = document.getElementById("reading-progress-bar");
+      const sections = navLinks.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+
+      if (menuButton && nav) {
+        menuButton.addEventListener("click", () => {
+          const open = menuButton.getAttribute("aria-expanded") !== "true";
+          menuButton.setAttribute("aria-expanded", String(open));
+          menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+          nav.classList.toggle("is-open", open);
+        });
+        navLinks.forEach(link => link.addEventListener("click", () => {
+          nav.classList.remove("is-open");
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.setAttribute("aria-label", "Open navigation");
+        }));
+      }
+
+      let scheduled = false;
+      const updatePagePosition = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        if (progress) progress.style.width = (max > 0 ? window.scrollY / max * 100 : 0) + "%";
+        let current = "";
+        sections.forEach(section => {
+          if (window.scrollY >= section.offsetTop - 170) current = section.id;
+        });
+        navLinks.forEach(link => {
+          const active = link.getAttribute("href") === "#" + current;
+          link.classList.toggle("is-current", active);
+          if (active) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+        scheduled = false;
+      };
+      window.addEventListener("scroll", () => {
+        if (!scheduled) {
+          requestAnimationFrame(updatePagePosition);
+          scheduled = true;
+        }
+      }, { passive: true });
+      updatePagePosition();
+
+      const reveal = document.querySelectorAll(
+        ".section-top, .about-text, .about-aside, .experience-row, .project-row, .skill-group, .education-grid > div, .contact-form"
+      );
+      if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const observer = new IntersectionObserver((entries, instance) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              instance.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        reveal.forEach(item => {
+          item.classList.add("will-reveal");
+          observer.observe(item);
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>
