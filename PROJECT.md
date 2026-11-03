@@ -4,7 +4,7 @@
 https://github.com/kevincaceresmendoza-stack/kevincaceresmendoza.git
 
 ## Deployment
-Not deployed yet.
+Live on Vercel: https://kevincaceresmendoza.vercel.app/#top
 
 ## Product
 Personal portfolio for Kevin C. Mendoza, an Electronics Engineer and Electronics Technician.
@@ -28,10 +28,10 @@ Hero with contact and résumé actions; professional highlights; about; internsh
 Direct first-person writing. Prioritize recruiter-facing qualifications and hands-on engineering work. Distinguish documented experience from project contributions.
 
 ## Assets
-Web-ready résumé PDF `Mendoza_Kevin_Resume.pdf` is committed to the repository root. No project photos or technical screenshots supplied yet.
+Web-ready résumé PDF `Mendoza_Kevin_Resume.pdf` is committed to the repository root and linked from the hero section. No authentic project photos, PCB screenshots, CAD drawings, simulation captures, or prototype images have been supplied yet; do not fabricate these as portfolio evidence.
 
 ## Functionality
-Responsive single-file HTML page. Contact form opens a prefilled email draft to kevincaceresmendoza@gmail.com; it does not submit to a backend. LinkedIn, email, phone, and résumé links are included.
+Responsive single-file HTML page. Contact form opens a prefilled email draft to kevincaceresmendoza@gmail.com; it does not submit to a backend. LinkedIn, email, phone, and résumé links are included. The live deployment URL is recorded above.
 
 ## Avoid
 Generic portfolio layouts, excessive animation, flashy colors, clutter, and unsupported project claims. Do not publish a residential street address.
