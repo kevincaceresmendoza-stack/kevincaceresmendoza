@@ -10,7 +10,7 @@
   <title>Kevin C. Mendoza | Electronics Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -390,6 +390,103 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     }
+
+    /* DESIGN SYSTEM: Precision engineering editorial */
+    :root {
+      --paper: #f7f8fa;
+      --surface: #ffffff;
+      --ink: #111d30;
+      --muted: #536176;
+      --soft: #e9edf3;
+      --line: #d9e0e9;
+      --blue: #2457c5;
+      --blue-dark: #173f98;
+      --blue-pale: #eaf0fc;
+      --navy: #101d32;
+      --green: #236b58;
+      --radius: 14px;
+      --content: 1200px;
+      --font: "Manrope", "DM Sans", sans-serif;
+    }
+    body { background: var(--paper); letter-spacing: -.008em; }
+    .site-header { position: sticky; top: 0; z-index: 10; background: #f7f8fa; }
+    .header-inner { min-height: 76px; }
+    .brand { font-size: 14px; letter-spacing: -.04em; }
+    .brand-mark { border-radius: 7px; background: var(--blue); }
+    .nav { font-size: 12px; letter-spacing: .01em; }
+    .hero { padding: clamp(72px, 9vw, 116px) 0 70px; }
+    .hero-grid { gap: clamp(44px, 7vw, 92px); }
+    h1 { max-width: 720px; font-size: clamp(3.45rem, 6.2vw, 5.75rem); line-height: .98; letter-spacing: -.065em; }
+    h1 .accent { color: var(--blue); }
+    .hero-role { margin-top: -8px; font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
+    .hero-copy { max-width: 590px; font-size: 17px; line-height: 1.8; }
+    .hero-note { font-size: 12px; }
+    .button { min-height: 46px; border-radius: 7px; font-size: 13px; }
+    .button.secondary { border-color: #aeb9c8; }
+    .hero-visual { min-height: 438px; background: #edf1f6; border-color: #dbe2ec; border-radius: 14px; }
+    .hero-visual::before, .hero-visual::after { border-color: #cbd5e2; }
+    .visual-caption { font-family: "IBM Plex Mono", monospace; font-size: 9px; letter-spacing: .13em; }
+    .credentials { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 0 26px; }
+    .credential { padding: 23px 20px 23px 0; }
+    .credential + .credential { padding-left: 24px; }
+    .credential dt { font-family: "IBM Plex Mono", monospace; font-size: 9px; letter-spacing: .1em; }
+    .credential dd { font-size: 14px; letter-spacing: -.025em; }
+    .section { padding: clamp(78px, 9vw, 118px) 0; }
+    .section-top { grid-template-columns: minmax(220px, .78fr) minmax(0, 1.22fr); gap: 56px; margin-bottom: 50px; }
+    .section h2 { font-size: clamp(2.35rem, 4vw, 3.45rem); letter-spacing: -.06em; line-height: 1.02; }
+    .section-intro { font-size: 16px; line-height: 1.8; }
+    .about-layout { gap: 76px; }
+    .about-text p { font-size: 15px; line-height: 1.85; }
+    .about-aside { border-radius: 10px; padding: 30px; background: #eaf0f8; color: var(--ink); border: 1px solid #d9e2ef; }
+    .about-aside h3 { font-size: 16px; }
+    .about-aside p { color: #46566d; line-height: 1.8; }
+    .experience { border-top: 1px solid #cbd5e1; }
+    .experience-row { padding: 34px 0 38px; gap: 64px; border-color: #cbd5e1; }
+    .experience-meta { font-family: "IBM Plex Mono", monospace; font-size: 11px; line-height: 1.9; }
+    .experience-meta strong { font-family: var(--font); font-size: 15px; }
+    .experience-content h3 { font-size: 22px; letter-spacing: -.04em; }
+    .experience-content p, .plain-list { font-size: 14px; line-height: 1.85; }
+    .projects { border-top: 1px solid #cbd5e1; }
+    .project-row { grid-template-columns: 54px minmax(0, .88fr) minmax(260px, 1.12fr); gap: 28px; padding: 32px 0 35px; border-color: #cbd5e1; }
+    .project-index { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--blue); padding-top: 3px; }
+    .project-name { font-size: 21px; line-height: 1.25; letter-spacing: -.045em; }
+    .project-type { font-family: "IBM Plex Mono", monospace; font-size: 9px; letter-spacing: .08em; line-height: 1.7; }
+    .project-description { font-size: 13px; line-height: 1.85; }
+    .project-role { font-size: 11px; letter-spacing: .015em; }
+    .capability-layout { gap: 88px; }
+    .capability { padding: 19px 0; font-size: 15px; letter-spacing: -.025em; }
+    .capability span:last-child { font-size: 16px; }
+    .software-line { font-size: 13px; line-height: 2; }
+    .education-grid { gap: 64px; border-color: #cbd5e1; }
+    .education-grid h3 { font-size: 19px; letter-spacing: -.035em; }
+    .education-grid p { font-size: 14px; line-height: 1.8; }
+    .contact-section { background: #101d32; }
+    .contact-section h2 { font-size: clamp(2.8rem, 5vw, 4.8rem); letter-spacing: -.06em; }
+    .contact-copy { font-size: 15px; line-height: 1.85; }
+    .contact-details { font-size: 13px; }
+    .contact-form { border-radius: 10px; padding: 32px; background: #172842; border-color: #344762; }
+    .field input, .field select, .field textarea { border-radius: 6px; font-size: 13px; }
+    .contact-form .button { border-radius: 6px; }
+    .site-footer { background: #0b1525; }
+    @media (max-width: 860px) {
+      .section-top { grid-template-columns: 1fr; gap: 18px; }
+      .about-layout { gap: 36px; }
+      .capability-layout { gap: 42px; }
+      .project-row { grid-template-columns: 38px minmax(0, .9fr) minmax(0, 1.1fr); }
+    }
+    @media (max-width: 640px) {
+      .header-inner { min-height: 70px; }
+      .nav { font-size: 11px; }
+      .hero { padding-top: 58px; }
+      .hero-visual { min-height: 290px; }
+      .credentials { padding: 0 18px; }
+      .credential, .credential + .credential { padding: 17px 0; }
+      .project-row { grid-template-columns: 26px 1fr; gap: 10px 14px; }
+      .project-description { grid-column: 2; }
+      .section { padding: 72px 0; }
+      .contact-form { padding: 20px; }
+    }
+
   </style>
 </head>
 <body>
@@ -417,9 +514,9 @@
     <section class="hero" id="top">
       <div class="shell hero-grid">
         <div>
-          <h1>Engineering ideas into <span class="accent">working systems.</span></h1>
+          <h1>Designing, testing, and <span class="accent">building electronics.</span></h1>
           <p class="hero-role">Electronics Engineer (ECE) · Electronics Technician (ECT)</p>
-          <p class="hero-copy">I'm Kevin C. Mendoza, an Electronics Engineer and Electronics Technician. I work across circuit design, PCB development, embedded systems, testing, and technical documentation.</p>
+          <p class="hero-copy">I'm Kevin C. Mendoza, a licensed Electronics Engineer and Electronics Technician focused on practical electronics, embedded systems, circuit design, and hands-on development. I'm looking to contribute to engineering teams and support projects that turn technical ideas into working solutions.</p>
           <div class="hero-actions">
             <a class="button" href="#contact">
               Contact me
@@ -430,7 +527,7 @@
               <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v9m0 0 3.5-3.5M10 12 6.5 8.5M4 15.5v1h12v-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
-          <p class="hero-note">Open to engineering opportunities and professional project inquiries.</p>
+          <p class="hero-note">Available for engineering opportunities · Open to selected technical projects</p>
         </div>
 
         <div class="hero-visual" aria-label="Abstract circuit board line drawing">
@@ -553,7 +650,7 @@
       <div class="shell">
         <div class="section-top">
           <h2>Selected engineering work.</h2>
-          <p class="section-intro">A concept-focused overview of academic and practical work across embedded systems, robotics, PCB design, CAD, and circuit simulation. Each entry explains the engineering objective, the tools involved, and the areas of work represented—without project photos.</p>
+          <p class="section-intro">A selection of academic and practical work across embedded systems, robotics, PCB design, CAD, and circuit simulation. Presented through the engineering problem space, tools, and development focus—without stock or project imagery.</p>
         </div>
         <div class="projects">
           <article class="project-row">
@@ -619,8 +716,8 @@
     <section class="section" id="capabilities">
       <div class="shell capability-layout">
         <div>
-          <h2>Ways I can support your team or project.</h2>
-          <p class="section-intro">I’m interested in engineering roles and project work that draw on my electronics background and hands-on technical skills.</p>
+          <h2>Technical skills for real-world engineering work.</h2>
+          <p class="section-intro">From early design work to testing and documentation, I bring a practical, collaborative approach to electronics engineering.</p>
           <p class="software-line"><strong>Tools:</strong> Altium Designer · AutoCAD · NI Multisim · Arduino</p>
         </div>
         <div class="capability-list" aria-label="Technical capabilities">
